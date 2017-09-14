@@ -9,6 +9,31 @@ yarn compose-up
 yarn stop
 ```
 
+TODOs...
+
+### openshift
+
+```bash
+oc login https://api.preview.openshift.com
+....
+```
+
+### deployment to heroku (no)
+
+- login into heroku
+- create application: parse-server-examples
+- in terminal from root project:
+
+```bash
+heroku login
+# output skip...
+heroku git:remote -a parse-server-examples
+# output:
+set git remote heroku to https://git.heroku.com/parse-server-examples.git
+
+git push heroku master
+```
+
 **original forked README:**
 
 Example project using the [parse-server](https://github.com/ParsePlatform/parse-server) module on Express.

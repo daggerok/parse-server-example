@@ -12,16 +12,18 @@
     "parse-server": "2.6.1"
   },
   "scripts": {
-    "start": "yarn -i; npm-run-all start:*",
+    "start": "yarn -i; npm-run-all -p start:*",
     "start:compose-up": "docker-compose up -d",
-    "start:server": "node index.js",
+    "start:server": "sleep 3; node index.js",
+    "start:dashboard": "sleep 5; parse-dashboard --appId appId --masterKey masterKey --serverURL \"http://localhost:1337/parse\" --appName optionalAppName",
     "stop": "docker-compose down -v"
   },
   "engines": {
     "node": ">=4.3"
   },
   "devDependencies": {
-    "npm-run-all": "4.1.1"
+    "npm-run-all": "4.1.1",
+    "parse-dashboard": "1.1.0"
   },
   "author": "Maksim Kostromin <daggerok@gmail.com>"
 }
