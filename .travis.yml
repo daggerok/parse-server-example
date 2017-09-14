@@ -35,7 +35,16 @@ before_script:
 
 script:
   - yarn -i
+
   - yarn start:compose-up
+  - sleep 1
+  - curl localhost:8081
+  - yarn stop
+
+  - yarn serve
+  - sleep 1
+  - curl localhost:1337
+  - curl localhost
   - yarn stop
 
 after_script:

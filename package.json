@@ -26,6 +26,7 @@
   },
   "scripts": {
     "postinstall": "bower install",
+    "serve": "docker-compose --project-name=all -f docker-compose-all.yml up -d",
     "start": "yarn -i; npm-run-all -p start:*",
     "start:compose-up": "docker-compose up -d",
     "start:server": "sleep 3; node index.js",
@@ -33,7 +34,7 @@
     "start:frontend": "npm-run-all -p start:frontend:*",
     "start:frontend:livereload": "livereload",
     "start:frontend:serve": "serve --cors --single --port 3000 ./app",
-    "stop": "docker-compose down -v"
+    "stop": "docker-compose down -v && docker-compose --project-name=all -f docker-compose-all.yml down -v"
   },
   "engines": {
     "node": ">=4.3"
