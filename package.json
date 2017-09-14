@@ -15,9 +15,15 @@
     "parse-server": "*"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "yarn -i; npm-run-all start:*",
+    "start:compose-up": "docker-compose up -d",
+    "start:server": "node index.js",
+    "stop": "docker-compose down -v"
   },
   "engines": {
     "node": ">=4.3"
+  },
+  "devDependencies": {
+    "npm-run-all": "4.1.1"
   }
 }
