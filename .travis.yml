@@ -43,8 +43,6 @@ after_script:
       cat npm-debug.log
     fi
   - ncu -u
-  - yarn global add npm-check-updates
-  - ncu -u
 
 before_cache:
   - rm -rf $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -57,3 +55,4 @@ cache:
     - $HOME/.npm/
     - $HOME/.yarn/
     - node_modules/
+    - app/bower_components/

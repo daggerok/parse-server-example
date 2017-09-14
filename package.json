@@ -11,19 +11,39 @@
     "parse": "1.10.0",
     "parse-server": "2.6.1"
   },
+  "livereload": {
+    "exclusions": [
+      "app/bower_components",
+      "bower_components",
+      "node_modules",
+      "*.json",
+      "README.*",
+      "yarn.lock"
+    ]
+  },
+  "config": {
+    "bower_directory": "app/bower_components"
+  },
   "scripts": {
+    "postinstall": "bower install",
     "start": "yarn -i; npm-run-all -p start:*",
     "start:compose-up": "docker-compose up -d",
     "start:server": "sleep 3; node index.js",
     "start:dashboard": "sleep 5; parse-dashboard --appId appId --masterKey masterKey --serverURL \"http://localhost:1337/parse\" --appName optionalAppName",
+    "start:frontend": "npm-run-all -p start:frontend:*",
+    "start:frontend:livereload": "livereload",
+    "start:frontend:serve": "serve --cors --single --port 3000 ./app",
     "stop": "docker-compose down -v"
   },
   "engines": {
     "node": ">=4.3"
   },
   "devDependencies": {
+    "bower": "1.7.10",
+    "livereload": "^0.6.2",
     "npm-run-all": "4.1.1",
-    "parse-dashboard": "1.1.0"
+    "parse-dashboard": "1.1.0",
+    "serve": "6.0.6"
   },
   "author": "Maksim Kostromin <daggerok@gmail.com>"
 }

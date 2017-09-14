@@ -1,5 +1,8 @@
 .DS_Store
 *.lock
+*lock.json
+bower_components/
+.idea/
 
 # Logs
 logs

@@ -1,0 +1,25 @@
+{
+  "name": "parse-server-example",
+  "description": "An example Parse API server using the parse-server module",
+  "main": "index.js",
+  "authors": [
+    "Maksim Kostromin <daggerok@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "parse-server"
+  ],
+  "homepage": "https://github.com/daggerok/parse-server-example",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "parse": "1.10.0",
+    "jquery": "3.2.1"
+  }
+}
