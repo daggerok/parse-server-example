@@ -1,5 +1,6 @@
 (function main() {
   document.addEventListener('DOMContentLoaded', function onDOMContentLoaded() {
-    console.log('hey!');
+    const app = document.querySelector('#app');
+    app.textContent = 'Hello, parse client!';
   });
 })();
