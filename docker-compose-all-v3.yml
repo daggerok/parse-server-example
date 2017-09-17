@@ -6,7 +6,6 @@ services:
     ports: ["27017:27017"]
     volumes: ["mongo-data:/data/db"]
     environment:
-      # MONGO_PORT_27017_TCP_ADDR: "localhost"
       MONGO_PORT_27017_TCP_PORT: 27017
   mongo-express:
     restart: always
@@ -18,27 +17,22 @@ services:
       ME_CONFIG_OPTIONS_EDITORTHEME: "ambiance"
       ME_CONFIG_MONGODB_PORT: 27017
       ME_CONFIG_MONGODB_SERVER: "mongo"
-  # parse-server-app:
-  #   restart: always
-  #   image: node:8.5.0-alpine
-  #   depends_on: [mongo]
-  #   ports: ["1337:1337"]
-  #   volumes:
-  #     - "parse-server-app-data:/app"
-  #     - ".:/app"
-  #   working_dir: /app
-  #   environment:
-  #     MONGODB_URI: "mongodb://mongo:27017/dev"
-  #   entrypoint: sh -c "node ./index.js"
+  parse-server-app:
+    restart: always
+    image: 127.0.0.1:5000/stack-app
+    build: .
+    depends_on: [mongo-express]
+    volumes: ["parse-server-app-data:/app"]
+    ports: ["1337:1337"]
   parse-client-app:
     restart: always
     image: nginx:1.13.5-alpine
-    # depends_on: [parse-server-app]
+    depends_on: [parse-server-app]
     ports: ["80:80"]
     volumes:
       - "parse-client-app-data:/var/log/nginx"
       - "./app:/usr/share/nginx/html:ro"
 volumes:
   mongo-data: {}
-  # parse-server-app-data: {}
+  parse-server-app-data: {}
   parse-client-app-data: {}
